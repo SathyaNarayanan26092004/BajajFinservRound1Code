@@ -1,7 +1,3 @@
-Here's the updated GitHub repository description without including any code, just a description about the code:
-
----
-
 # Mutual Followers - Spring Boot Application
 
 This Spring Boot application automatically interacts with a remote API at application startup and processes user data without requiring any manual HTTP trigger. The application performs the following key tasks:
@@ -36,7 +32,3 @@ This Spring Boot application automatically interacts with a remote API at applic
 
 ### Purpose:
 This application demonstrates how to create an automated Spring Boot service that interacts with external APIs, processes data, and communicates results securely with external systems.
-
---- 
-
-This description provides a high-level overview of the project without revealing the specific code details.
