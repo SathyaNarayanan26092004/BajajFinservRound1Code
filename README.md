@@ -1,46 +1,42 @@
+Here's the updated GitHub repository description without including any code, just a description about the code:
+
+---
+
 # Mutual Followers - Spring Boot Application
 
-This is a Spring Boot-based application designed to manage and analyze mutual followers on social media platforms. It utilizes a simple and efficient backend architecture powered by Spring Boot, offering RESTful services for managing user data and computing mutual followers based on social media connections.
+This Spring Boot application automatically interacts with a remote API at application startup and processes user data without requiring any manual HTTP trigger. The application performs the following key tasks:
 
-## Features
+## Project Overview
 
-- *Spring Boot Framework*: Utilizes Spring Boot to create a robust and scalable backend service.
-- *REST API*: Provides RESTful APIs to interact with the application and get mutual follower data.
-- *Embedded Tomcat Server*: Uses Tomcat as the embedded web server, making the application lightweight and easy to deploy.
-- *LiveReload Support*: Includes Spring DevTools for automatic application restart and LiveReload support for real-time updates during development.
-- *No External Dependencies*: The application doesn't rely on external databases or services, making it simple to deploy and extend.
+### Problem Overview:
+1. *Automatic API Interaction: The application makes a **POST request* to https://bfhldevapigw.healthrx.co.in/hiring/generateWebhook on startup, sending user details (name, regNo, and email).
+2. *Response Handling: The response contains a **webhook URL, **JWT access token, and **user data* that needs to be processed based on the last digit of the regNo:
+   - If the last digit is *even, the application solves **Question 2*: Nth-Level Followers.
+   - If the last digit is *odd, the application solves **Question 1*: Mutual Followers.
+3. *Result Posting: The computed result is sent to the **webhook URL* provided in the response, using *JWT authentication* in the Authorization header.
 
-## Technologies Used
+### Key Features:
+1. *Automatic Execution*: The application performs all tasks at startup without the need for external triggers or user intervention.
+2. *Data Processing*: 
+   - *Question 1 (Mutual Followers)*: Identifies mutual follow pairs where both users follow each other.
+   - *Question 2 (Nth-Level Followers)*: Identifies users who are exactly n levels away in the "follows" relationship from a specified start ID.
+3. *Webhook Communication*: Sends the computed result back to the provided webhook URL with a JWT token for secure authentication.
+4. *Retry Logic*: In case of failure when posting the result to the webhook, the application retries up to 4 times.
 
-- *Java 21*: The latest version of Java for improved performance and modern features.
-- *Spring Boot*: A framework for building production-ready applications with minimal effort.
-- *Tomcat*: Embedded as the default web server for serving the application.
-- *Spring DevTools*: For faster development with automatic restarts and LiveReload.
-  
-## How to Run
+### Technologies:
+- *Spring Boot*: The project is built using Spring Boot, providing a lightweight and efficient framework for backend services.
+- *RestTemplate / WebClient*: These are used to make HTTP requests to the remote API and send data to the webhook.
+- *JWT Authentication*: The app utilizes JWT for secure communication with the remote API.
+- *No REST Controllers*: There are no REST controllers or manual HTTP triggers; the process is entirely automatic upon startup.
 
-1. Clone the repository:
-    bash
-    git clone (https://github.com/SathyaNarayanan26092004/BajajFinservRound1Code.git)
-    
-2. Navigate to the project folder:
-    bash
-    cd mutual-followers
-    
-3. Run the application:
-    bash
-    ./mvnw spring-boot:run
-    
-4. Open your browser and go to http://localhost:8080 to start interacting with the app.
+### How It Works:
+- On startup, the application sends a POST request to the remote API with predefined user data.
+- Based on the response, the application processes the data and determines which problem to solve (Mutual Followers or Nth-Level Followers).
+- The final result is then posted to the provided webhook URL with JWT authentication.
 
-## Endpoints
+### Purpose:
+This application demonstrates how to create an automated Spring Boot service that interacts with external APIs, processes data, and communicates results securely with external systems.
 
-- *GET* /api/mutual-followers: Retrieves mutual followers between two users.
-- *POST* /api/users: Adds a new user to the database.
-- *GET* /api/users/{id}: Retrieves a specific user's details.
+--- 
 
-## Future Enhancements
-
-- Integration with external social media APIs (like Twitter, Instagram) for automatic follower data fetching.
-- User authentication and authorization for better data security.
-- Frontend interface for better user interaction.
+This description provides a high-level overview of the project without revealing the specific code details.
