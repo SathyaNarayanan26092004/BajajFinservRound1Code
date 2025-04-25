@@ -21,7 +21,7 @@ This is a Spring Boot-based application designed to manage and analyze mutual fo
 
 1. Clone the repository:
     bash
-    git clone https://github.com/your-username/mutual-followers.git
+    git clone (https://github.com/SathyaNarayanan26092004/BajajFinservRound1Code.git)
     
 2. Navigate to the project folder:
     bash
